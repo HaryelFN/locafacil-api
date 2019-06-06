@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+
+<body style="font-family: Arial; font-size: 14px;">
+
+<p>Bom dia!</p>
+
+<label th:text="'Sr(a): ' + ${a.nome} + ' o alguel do imóvel situado na ' + ${a.logradouro} + ', '+${a.bairro}+', '+${a.cidade}+', '+${a.uf}+'. Vencerá hoje, não perca o desconto de 10%. Efetuando o pagamento até a data '+ ${#temporals.format(a.dataVencimento, 'dd/MM/yyyy')} +', o valor e de R$ '+ ${#numbers.formatDecimal(((a.valor - (a.valor * 10)/100) + a.iptu), 0, 'POINT', 2, 'COMMA')} +''"></label>
+
+<p>Para mais informações entre em contato no número (62)9914-7451</p>
+
+<p>Se já estiver pago, desconsidere este e-mail.</p>
+
+</body>
+</html>

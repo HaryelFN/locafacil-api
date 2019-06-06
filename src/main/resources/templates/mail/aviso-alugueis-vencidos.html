@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+
+<body style="font-family: Arial; font-size: 14px;">
+
+<p>Existem aluguéis vencidos ou vencendo hoje. Veja:</p>
+
+<p>
+    <table style="width: 100%; border-collapse: collapse;  margin: 20px 0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Locatário</th>
+                <th>Telefone</th>
+                <th>Imóvel</th>
+                <th>Vencimento</th>
+                <th>Valor</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr style="border-bottom: 1px solid #ccc; border-top: 1px solid #ccc;"
+                th:each="a: ${alugueis}">
+                <td th:text="${a.id}">#</td>
+                <td th:text="${a.contrato.locatario.nome}">João Silva</td>
+                <td th:text="${a.contrato.locatario.telefone}">(62)98409-8147</td>
+                <td th:text="${a.contrato.imovel.logradouro}">Rua Sem Nome</td>
+                <td th:text="${#temporals.format(a.dtVencimento, 'dd/MM/yyyy')}"  style="text-align: center">10/06/2017</td>
+                <td th:text="${#numbers.formatDecimal(a.valor, 0, 'POINT', 2, 'COMMA')}" style="text-align: right">R$ 10.000,00</td>
+                <td><a th:href="@{http://35.247.217.71/alugueis}">   Click</a></td>
+            </tr>
+        </tbody>
+    </table>
+</p>
+
+<p>LocaFacil - Gestão de Alugueis</p>
+
+</body>
+</html>
